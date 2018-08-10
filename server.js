@@ -127,8 +127,6 @@ app.get("/scrape", function(req, res) {
           res.render("index", {
             Article: result
           });
-          // View the added result in the console
-          console.log(Article);
         })
         .catch(function(err) {
           // If an error occurred, log it
