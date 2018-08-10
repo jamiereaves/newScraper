@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta  charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  {{!-- Google Fonts 
+  
+  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">--}}
+  <title>The Not York Times</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+</head>
+
+<body>
+    
+<nav class="navbar navbar-expand-md border-bottom bg-light navbar-light mb-3 p-2 pl-3">
+    <div class="navbar-header">
+        <a href="/" class="navbar-brand mt-3 p-0"><h1>FAUX <span class="text-info"> YORK </span> TIMES</h1></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-right"></span>
+    </button>       
+    <div class="collapse navbar-collapse justify-content-end text-dark" id="navbarSupportedContent">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item  text-dark p-1 ml-3 border-highlight-nav border-secondary font-weight-bold" id="homeBtn"><a href="/" class="text-dark">Home</a></li>
+            <li class="nav-item text-dark p-1 ml-3 font-weight-bold" id ="savedArticles"><a href="#" class="text-dark"> Food</a></li>
+            <li class="nav-item text-dark p-1 ml-3 font-weight-bold" id ="savedArticles"><a href="#" class="text-dark"> Science</a></li>
+            <li class="nav-item text-dark p-1 ml-3 font-weight-bold" id ="savedArticles"><a href="#" class="text-dark"> Soccer</a></li>
+            <li class="nav-item text-dark p-1 ml-3 font-weight-bold" id ="savedArticles"><a href="/articles/saved" class="text-dark"> Saved</a></li>
+
+        </ul>                
+    </div>
+</nav>  
+  
+  {{{body}}}
+  
+<footer class="footer text-center bg-secondary mt-2 pt-2 border-top">
+    <h6 class="text-white"><span>
+        <a class="text-dark" href="/about">About <span class="LuckyFont">J O B <span class="text-info"> S K R</span></span></a> ||
+        <a class="text-dark" href= "https://github.com/KBClayton/AnotherProject">GitHub Repository</a>
+    </span></h6>
+    <h6 class="mb-0 pb-0 text-white font-weight-light">This website is hosted on <a class="font-weight-bold text-white" href="http://www.heroku.com">Heroku</a></h6>
+</footer>
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+{{!--<script src="/js/newSavedJob.js"></script>--}}
+<script src="/app.js"></script>
+{{!--<script src="/js/jobSearch.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/jobDetails.js"></script>
+<script src="/js/editJob.js"></script>--}}
+
+</html>

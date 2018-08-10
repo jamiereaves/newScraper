@@ -1,0 +1,104 @@
+<div class="push8"></div>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card p-3 m-1 row bg-light border-secondary mb-6">
+          <h3 class="text-dark p-3 text-center">Saved Articles</h3>
+          <div class="row">
+            
+            {{#if Article}}
+              {{#each Article}}
+                <div data-toggle="collapse" action="{{Article}}?_method=GET" method="POST" class=" col-md-6 col-lg-4">
+
+                  <div class="card p-3 mb-3"  style="width: 18rem; margin:auto">
+                    <img class="card-img-top" src="{{this.imagelink}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title" id="{{_id}}" style="height: 80px">{{this.title}}</h5>
+                      <p class="card-text" style="height: 100px; overflow:scroll">{{this.summary}}</p>
+                      <div class="row">
+                        <div class="col-12">
+                          <a href="{{this.link}}" class="btn btn-primary">Read</a>
+                          <a><button href="#" class="btn btn-info saveBtn" value="{{_id}}">Save</button></a>
+                          <a><button href="#" class="btn btn-info commentBtn" value="{{_id}}">Rave</button></a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <a href="/comments/{{_id}}" class="btn btn-info displayComment" id="displayComments{{_id}}" value="{{_id}}"> Comments</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              {{/each}}
+            {{else}}
+              <div class="col-12 text-center">
+                <h6 class="text-center text-danger">There are currently no saved articles.</h6>
+              </div>
+                  
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>	
+      
+  <div class="modal" id="commentSubmitModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCommentTitleA"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="userName">Name:</label>
+              <input class="form-control" id="userName" type="text" placeholder="Janelle Doe">
+            </div>
+            <div class="form-group">
+              <label for="userComment">Comment:</label>
+              <textarea class="form-control" id="userComment" rows="3" placeholder="Type your comment here."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary commentSubmit" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="commentViewModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCommentTitleB"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {{#if Comment}}
+              {{#each Comment}}
+                <div data-toggle="collapse" action="{{Comment}}?_method=GET" method="POST">
+                  <div class="modal-body">
+                    <p>"{{this.message}}"</p>
+                  </div>
+                  <div class="modal-footer">
+                    <p>Comment Author: {{this.name}}</p>
+                    <button type="button" class="btn btn-primary">Edit Comment</button>
+                    <button type="button" class="btn btn-primary">Delete Comment</button>
+                  </div>
+                </div>
+              {{/each}}
+            {{else}}
+              <div class="col-12 text-center">
+                <h6 class="text-center text-danger">There are no comments on this article.</h6>
+              </div>			
+            {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
