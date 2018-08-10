@@ -30,6 +30,21 @@ var ArticleSchema = new Schema({
     type: Boolean,
     default: false,
     required: true
+  },
+  food: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  science: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  soccer: {
+    type: Boolean,
+    default: false,
+    required: true
   }
 });
 

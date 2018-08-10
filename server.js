@@ -119,13 +119,17 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .children("img")
         .attr("src");
+      result.food = true;
         
       console.log(result);
       
       db.Article.create(result)
-        .then(function(dbArticle) {
+        .then(function(result) {
+          res.render("index", {
+            Article: result
+          });
           // View the added result in the console
-          console.log(dbArticle);
+          console.log(Article);
         })
         .catch(function(err) {
           // If an error occurred, log it
@@ -133,7 +137,6 @@ app.get("/scrape", function(req, res) {
         });
     });
 });
-res.send("Scrape Complete");
 });
 
 // Route for getting all Articles from the db

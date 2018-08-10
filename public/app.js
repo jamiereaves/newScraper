@@ -24,13 +24,13 @@ $(document).on("click", ".commentBtn", function(event) {
   console.log(commentHelper);
   console.log(titleHelper);
   $('#commentSubmitModal').modal();
-  titleHelper="";
 })
 
 //button to submit a comment to the database
 $(document).on("click", ".commentSubmit", function(event) {
   event.preventDefault();
   $("#displayComments"+commentHelper).show();
+  console.log(titleHelper);
   // Create an addComment Object
   var addComment = {
     name: $("#userName")
@@ -39,7 +39,8 @@ $(document).on("click", ".commentSubmit", function(event) {
       message: $("#userComment")
       .val()
       .trim(),
-      articleID: commentHelper
+      articleID: commentHelper,
+      articleName: titleHelper
    };
   console.log(addComment);
   $.ajax("/articles/comments/"+commentHelper, {
@@ -48,6 +49,7 @@ $(document).on("click", ".commentSubmit", function(event) {
   }).then(function () {
     console.log("Added comment");
     commentHelper="";
+    titleHelper="";
   });
 });
 
@@ -58,6 +60,17 @@ $(document).on("click", ".displayComment", function(event) {
     type: "GET"
   }).then(function () {
     console.log("saved article");
+  });
+
+});
+
+//button to scrape new articles
+$(document).on("click", ".scraper", function(event) {
+  event.preventDefault();
+  $.ajax("/scrape/", {
+    type: "GET"
+  }).then(function () {
+    console.log("here's the new stuff!");
   });
 
 });

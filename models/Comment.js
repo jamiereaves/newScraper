@@ -11,7 +11,9 @@ var CommentSchema = new Schema({
   // `body` is of type String
   message: String,
   // 'articleID' is a string
-  articleID: String
+  articleID: String,
+  // 'articleName' is a string
+  articleName: String
 });
 
 // This creates our model from the above schema, using mongoose's model method
