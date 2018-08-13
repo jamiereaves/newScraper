@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card p-3 m-1 row bg-light border-secondary mb-6">
-          <h3 class="text-dark p-3 text-center">Saved Articles</h3>
+          <h3 class="text-dark p-3 text-center pageHeader">Saved Articles</h3>
           <div class="row">
             
             {{#if Article}}
@@ -16,15 +16,15 @@
                       <h5 class="card-title" id="{{_id}}" style="height: 80px">{{this.title}}</h5>
                       <p class="card-text" style="height: 100px; overflow:scroll">{{this.summary}}</p>
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 btnHldr">
                           <a href="{{this.link}}" class="btn btn-primary">Read</a>
-                          <a><button href="#" class="btn btn-secondary commentBtn" value="{{_id}}">Rave</button></a>
+                          <a><button href="#" class="btn btn-secondary commentBtn" value="{{_id}}">Comment</button></a>
+                          <a><button href="#" class="btn btn-danger removeBtn" value="{{_id}}">Remove</button></a>
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 btnHldr">
                           <a href="/comments/{{_id}}" class="btn btn-outline-dark displayComment" id="displayComments{{_id}}" value="{{_id}}">View Comments</a>
-                          <a><button href="#" class="btn btn-danger removeBtn" value="{{_id}}">Remove</button></a>
                         </div>
                       </div>
                     </div>
@@ -36,7 +36,7 @@
               <div class="col-12 text-center">
                 <h6 class="text-center text-danger">There are currently no saved articles.</h6>
               </div>
-              <a href="/" class="btn btn-outline-primary">Home</a>
+              <a href="/" class="btn btn-outline-primary emptyBtn">Home</a>
                   
             {{/if}}
           </div>

@@ -4,22 +4,22 @@
       <div class="col-md-12">
         <div class="card p-3 m-1 row bg-light border-secondary mb-6">
           {{#if Comment}}
-          <h3 class="text-dark p-3 text-center commentTitle" id="commentTitle{{Comment.[0]._id}}">{{Comment.[0].articleName}}</h3>
+          <h3 class="text-dark p-3 text-center commentTitle pageHeader" id="commentTitle{{Comment.[0]._id}}">{{Comment.[0].articleName}}</h3>
           <div class="row">
             {{else}}
             {{/if}}
            {{#if Comment}}
             {{#each Comment}}
             
-                <div data-toggle="collapse" action="{{Comment}}?_method=GET" method="POST" class=" col-md-12 col-lg-6">
+                <div data-toggle="collapse" action="{{Comment}}?_method=GET" method="POST" class=" col-md-12 col-lg-6 commentCardBody">
 
                   <div class="card p-3 mb-3"  style="width: 80%;">
                     <div class="card-body">
                       <h5 class="card-title" id="{{_id}}" style="height: 100px; overflow:scroll">"{{this.message}}"</h5>
                       <p class="card-text text-right">Posted by {{this.name}}</p>
                       <div class="row">
-                        <div class="col-12">
-                          <a href="/" class="btn btn-primary">Home</a>
+                        <div class="col-12 btnHldr">
+                          <a href="/" class="btn btn-primary homeBtn">Home</a>
                           <a><button href="#" class="btn btn-info editBtn" value="{{_id}}">Edit</button></a>
                           <a><button href="#" class="btn btn-danger deleteBtn" value="{{_id}}">Delete</button></a>
                         </div>
@@ -35,7 +35,7 @@
               <div class="col-12 text-center">
                 <h5 class="text-center text-danger">There are currently no comments on this article.</h5>
               </div>
-              <a href="/" class="btn btn-outline-primary">Home</a>
+              <a href="/" class="btn btn-outline-primary emptyBtn">Home</a>
                   
             {{/if}}
           </div>
@@ -62,7 +62,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="editCommentSubmit" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-primary" id="editCommentSubmit" data-dismiss="modal">Submit</button>
         </div>
       </div>
     </div>

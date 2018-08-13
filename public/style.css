@@ -1,0 +1,37 @@
+.scraper,
+.emptyBtn{
+  width:40%;
+  align-content: center;
+  margin: 0 auto 10px;
+}
+
+.pageHeader{
+  margin:0;
+}
+
+.linkBtn, 
+.saveBtn, 
+.commentBtn, 
+.homeBtn, 
+.editBtn, 
+.deleteBtn {
+  margin: 5px;
+}
+
+.btnHldr{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.displayComment{
+  margin: auto;
+}
+
+.commentCardBody{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
