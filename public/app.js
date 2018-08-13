@@ -1,6 +1,7 @@
 var commentHelper = "";
 var titleHelper = "";
 var commentViewHelper ="";
+var messageHelper = "";
 //button to save an article
 $(document).on("click", ".saveBtn", function(event) {
   event.preventDefault();
@@ -26,10 +27,26 @@ $(document).on("click", ".commentBtn", function(event) {
   $('#commentSubmitModal').modal();
 })
 
-//button to submit a comment to the database
+//button to edit an article comment
+$(document).on("click", ".editBtn", function() {
+  event.preventDefault();
+  commentHelper="";
+  titleHelper="";
+  $("#modalCommentTitleB").text("");
+  commentHelper = $(this).val();
+  titleHelper = $("#commentTitle"+commentHelper).text();
+  messageHelper = $("#"+commentHelper).text();
+  $("#modalCommentTitleB").text(titleHelper);
+  $("#userCommentEdit").text(messageHelper);
+  console.log("articleID: " + commentHelper);
+  console.log("articleName: " + titleHelper);
+  console.log("message: " + messageHelper);
+  $("#commentEditModal").modal();
+})
+
+//button to submit a new comment to the database
 $(document).on("click", ".commentSubmit", function(event) {
   event.preventDefault();
-  $("#displayComments"+commentHelper).show();
   console.log(titleHelper);
   // Create an addComment Object
   var addComment = {
@@ -53,6 +70,27 @@ $(document).on("click", ".commentSubmit", function(event) {
   });
 });
 
+//button to submit an edited comment to the database
+$(document).on("click", "#editCommentSubmit", function(event) {
+  event.preventDefault();
+  console.log("articleName: " + titleHelper);
+  console.log("articleID: " + commentHelper);
+  // Create an addComment Object
+  var addComment = {
+      message: $("#userCommentEdit")
+      .val()
+      .trim()
+   };
+  console.log(addComment);
+  $.ajax("/articles/comments/edit/"+commentHelper, {
+    type: "PUT",
+    data: addComment
+  }).then(function () {
+    console.log("Added comment");
+    location.reload();
+  });
+});
+
 //button to view comments
 $(document).on("click", ".displayComment", function(event) {
   commentViewHelper = $(this).val();
@@ -72,5 +110,7 @@ $(document).on("click", ".scraper", function(event) {
   }).then(function () {
     console.log("here's the new stuff!");
   });
+  location.reload();
+  console.log("here's the new stuff!");
 
 });

@@ -98,6 +98,13 @@ app.get("/scrape", function(req, res) {
     $("article.story").each(function(i, element) {
       // Save an empty result object
       var result = {};
+      if ($(this)
+      .children("div.story-body")
+      .children("h2.headline")
+      .children("a")
+      .text() == ""){
+        return;
+      }
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
         .children("div.story-body")
@@ -124,16 +131,14 @@ app.get("/scrape", function(req, res) {
       
       db.Article.create(result)
         .then(function(result) {
-          res.render("index", {
-            Article: result
+          res.json(result)
+          })
+          .catch(function(err) {
+            // If an error occurred, log it
+            console.log(err);
           });
-        })
-        .catch(function(err) {
-          // If an error occurred, log it
-          console.log(err);
         });
     });
-});
 });
 
 // Route for getting all Articles from the db
@@ -150,7 +155,7 @@ app.get("/articles", function(req, res) {
     });
 });
 
-// Route for saving/updating an Article's associated Note
+// Route for creating a new comment 
 app.post("/articles/comments/:id", function(req, res) {
   // Create a new note and pass the req.body to the entry
   db.Comment.create(req.body)
@@ -164,6 +169,21 @@ app.post("/articles/comments/:id", function(req, res) {
     });
 });
 
+// route for editing an existing comment
+app.put("/articles/comments/edit/:id", function(req, res) {
+  console.log(req.params.id);
+  console.log(req.body.message);
+  db.Comment.update({_id: req.params.id}, {$set: {"message": req.body.message}})
+  .then(function(result){
+    res.json(result);
+  })
+  .catch(function(err) {
+    // if an error occurs, send to the client
+    res.json(err);
+  })
+})
+
+//route for saving an article
 app.put("/articles/saved/:id", function(req, res) {
   db.Article.update({_id: req.params.id}, {$set: {"saved":"true"}} )
   .then(function(dbArticle){
