@@ -171,8 +171,6 @@ app.post("/articles/comments/:id", function(req, res) {
 
 // route for editing an existing comment
 app.put("/articles/comments/edit/:id", function(req, res) {
-  console.log(req.params.id);
-  console.log(req.body.message);
   db.Comment.update({_id: req.params.id}, {$set: {"message": req.body.message}})
   .then(function(result){
     res.json(result);
@@ -192,6 +190,18 @@ app.put("/articles/saved/:id", function(req, res) {
   .catch(function(err) {
     res.json(err);
   })
+})
+
+//route for deleting an article
+app.delete("/delete/:id", function(req, res) {
+  console.log("why isn't this console logging anything?");
+  db.Comment.findOneAndRemove({"_id":req.params.id})
+    .then(function(result){
+      res.json(result);
+    })
+    .catch(function(err) {
+      res.json(err);
+    })
 })
 
 // Start the server

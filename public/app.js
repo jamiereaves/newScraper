@@ -99,7 +99,6 @@ $(document).on("click", ".displayComment", function(event) {
   }).then(function () {
     console.log("saved article");
   });
-
 });
 
 //button to scrape new articles
@@ -112,5 +111,28 @@ $(document).on("click", ".scraper", function(event) {
   });
   location.reload();
   console.log("here's the new stuff!");
+});
 
+//button to prompt modal to confirm delete comment
+$(document).on("click", ".deleteBtn", function() {
+  event.preventDefault();
+  commentHelper="";
+  messageHelper="";
+  $("#modalCommentTitleC").text("");
+  commentHelper = $(this).val();
+  messageHelper = $("#"+commentHelper).text();
+  console.log(messageHelper);
+  $("#modalCommentTitleC").text(messageHelper);
+  $("#commentDeleteModal").modal();
+})
+
+//button to delete comment
+$(document).on("click", "#deleteCommentSubmit", function() {
+  console.log(commentHelper);
+  $.ajax("/delete/"+commentHelper, {
+    type: "DELETE"
+  }).then(function() {
+    console.log("deleted")
+  })
+  location.reload();
 });
