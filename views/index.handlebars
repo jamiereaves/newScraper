@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="card p-3 m-1 row bg-light border-secondary mb-6">
           <h3 class="text-dark p-3 text-center">Home</h3>
-          <a href="#" style="width:80%; margin:5 auto" class="btn btn-primary scraper">Refresh Content</a>
+          <a href="#" class="btn btn-outline-danger scraper">Refresh Content</a>
           <div class="row">
             
             {{#if Article}}
@@ -20,12 +20,12 @@
                         <div class="col-12">
                           <a href="{{this.link}}" class="btn btn-primary">Read</a>
                           <a><button href="#" class="btn btn-info saveBtn" value="{{_id}}">Save</button></a>
-                          <a><button href="#" class="btn btn-info commentBtn" value="{{_id}}">Rave</button></a>
+                          <a><button href="#" class="btn btn-secondary commentBtn" value="{{_id}}">Rave</button></a>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-12">
-                          <a href="/comments/{{_id}}" class="btn btn-info displayComment" id="displayComments{{_id}}" value="{{_id}}"> Comments</a>
+                          <a href="/comments/{{_id}}" class="btn btn-outline-dark displayComment" id="displayComments{{_id}}" value="{{_id}}">View Comments</a>
                         </div>
                       </div>
                     </div>

@@ -15,6 +15,19 @@ $(document).on("click", ".saveBtn", function(event) {
   });
 });
 
+//button to remove an article from the saved list
+$(document).on("click", ".removeBtn", function(event) {
+  event.preventDefault();
+  var helper = $(this).val()
+  console.log(helper);
+  $.ajax("/articles/unsaved/" + helper, {
+    type: "PUT"
+  }).then(function () {
+    console.log("removed article");
+    location.reload();
+  });
+});
+
 //button to comment on an article
 $(document).on("click", ".commentBtn", function(event) {
   event.preventDefault();

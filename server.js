@@ -84,7 +84,7 @@ app.get("/comments/:id", function(req, res) {
     res.render("comments", {
       Comment: result
     });
-    console.log(result);
+    console.log(result[0].articleName);
   })
 })
 
@@ -189,8 +189,19 @@ app.put("/articles/saved/:id", function(req, res) {
   })
   .catch(function(err) {
     res.json(err);
+  });
+});
+
+//route for removing an article from the saved list
+app.put("/articles/unsaved/:id", function(req, res) {
+  db.Article.update({_id: req.params.id}, {$set: {"saved":"false"}} )
+  .then(function(dbArticle){
+    res.json(dbArticle);
   })
-})
+  .catch(function(err) {
+    res.json(err);
+  });
+});
 
 //route for deleting an article
 app.delete("/delete/:id", function(req, res) {

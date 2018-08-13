@@ -18,13 +18,13 @@
                       <div class="row">
                         <div class="col-12">
                           <a href="{{this.link}}" class="btn btn-primary">Read</a>
-                          <a><button href="#" class="btn btn-info saveBtn" value="{{_id}}">Save</button></a>
-                          <a><button href="#" class="btn btn-info commentBtn" value="{{_id}}">Rave</button></a>
+                          <a><button href="#" class="btn btn-secondary commentBtn" value="{{_id}}">Rave</button></a>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-12">
-                          <a href="/comments/{{_id}}" class="btn btn-info displayComment" id="displayComments{{_id}}" value="{{_id}}"> Comments</a>
+                          <a href="/comments/{{_id}}" class="btn btn-outline-dark displayComment" id="displayComments{{_id}}" value="{{_id}}">View Comments</a>
+                          <a><button href="#" class="btn btn-danger removeBtn" value="{{_id}}">Remove</button></a>
                         </div>
                       </div>
                     </div>
@@ -36,6 +36,7 @@
               <div class="col-12 text-center">
                 <h6 class="text-center text-danger">There are currently no saved articles.</h6>
               </div>
+              <a href="/" class="btn btn-outline-primary">Home</a>
                   
             {{/if}}
           </div>
